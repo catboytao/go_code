@@ -46,6 +46,14 @@ func main() {
 	compute := Compute{}	
 	phone := Phone{}
 	camera := Camera{}
+	//体现了面向接口的多态特征
 	compute.Working(phone)
 	compute.Working(camera)
+
+	//定义一个多态数组
+	var usbArr [3]Usb
+	usbArr[0] = Phone{}
+	usbArr[1] = Phone{}
+	usbArr[2] = Camera{}
+	fmt.Println(usbArr)
 }
