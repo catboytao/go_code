@@ -6,8 +6,32 @@ import (
 	"os"
 )
 
+//判断文件或者目录是否存在
+func IsExists(path string) (bool,error) {
+	_,err := os.Stat(path)
+	if err == nil {
+		return true,nil
+	}
+	if os.IsNotExist(err) {
+		return false,nil
+	}
+	return false,err
+}
+
 func main()  {
 	filePath := "d:/abc.txt"
+	/*
+	const (
+    O_RDONLY int = syscall.O_RDONLY // open the file read-only.
+    O_WRONLY int = syscall.O_WRONLY // open the file write-only.
+    O_RDWR   int = syscall.O_RDWR   // open the file read-write.
+    O_APPEND int = syscall.O_APPEND // append data to the file when writing.
+    O_CREATE int = syscall.O_CREAT  // create a new file if none exists.
+    O_EXCL   int = syscall.O_EXCL   // used with O_CREATE, file must not exist
+    O_SYNC   int = syscall.O_SYNC   // open for synchronous I/O.
+    O_TRUNC  int = syscall.O_TRUNC  // if possible, truncate file when opened.
+)
+	*/
 	file,err := os.OpenFile(filePath,os.O_WRONLY | os.O_CREATE,0666)
 	if err != nil {
 		fmt.Printf("open file err=%v\n",err)
