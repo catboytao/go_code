@@ -5,7 +5,7 @@ import (
 )
 //struct tag 使用
 type Person struct {
-	Name string `json:"name"`
+	Name string `json:"name"`   //反射机制
 	Age int	`json:"age"`
 	Skill string `json:"skill"`
 }
